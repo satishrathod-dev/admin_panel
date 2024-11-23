@@ -1,0 +1,14 @@
+.add-container {
+  display: flex;
+}
+
+.add-container button {
+  margin-left: 80%;
+  width: 150px;
+  height: 30px;
+  padding: 3px 0px;
+  background-color: greenyellow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
