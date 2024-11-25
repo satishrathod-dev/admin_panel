@@ -5,8 +5,10 @@ import Layout from "./layout/Layout.js";
 import { Router, Route, Routes } from "react-router-dom";
 import { hover } from "@testing-library/user-event/dist/hover.js";
 import Home from "./components/Home.js";
-import UserManagement from "./components/UserManagement.js";
-import RoleManagement from "./components/RoleManagement.js";
+import UserManagement from "./components/UserManagement/UserManagement.js";
+import RoleManagement from "./components/RoleManagement/RoleManagement.js";
+import { UserContextProvider } from "./context/UserContext.js";
+import { RoleContextProvider } from "./context/RoleContext.js";
 
 function App() {
   // function hanleClick() {
@@ -64,13 +66,17 @@ function App() {
           ))}
         </tbody>
       </table> */}
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/users" element={<UserManagement />}></Route>
-          <Route path="/roles" element={<RoleManagement />}></Route>
-        </Routes>
-      </Layout>
+      <UserContextProvider>
+        <RoleContextProvider>
+          <Layout>
+            <Routes>
+              {/* <Route path="/" element={<Home />}></Route> */}
+              <Route path="/users" element={<UserManagement />}></Route>
+              <Route path="/roles" element={<RoleManagement />}></Route>
+            </Routes>
+          </Layout>
+        </RoleContextProvider>
+      </UserContextProvider>
     </div>
   );
 }
